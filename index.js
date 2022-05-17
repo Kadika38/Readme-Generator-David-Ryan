@@ -84,7 +84,7 @@ ${response.inpUsage}
 
 
 ## License
-${response.inpLic}
+This repository is licensed using a ${response.inpLic} license.
 
 
 ## Contributing
