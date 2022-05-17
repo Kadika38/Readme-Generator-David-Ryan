@@ -1,45 +1,103 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const { indexOf } = require('lodash');
+
+const licenseArray = ["[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)", "[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)", "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)", "[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)", "[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)](https://opensource.org/licenses/EPL-1.0)", "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)", "[![License: Hippocratic 2.1](https://img.shields.io/badge/License-Hippocratic_2.1-lightgrey.svg)](https://firstdonoharm.dev)", "[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)", "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)", "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)", "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)", "[![License: Open Data Commons Attribution](https://img.shields.io/badge/License-ODC_BY-brightgreen.svg)](https://opendatacommons.org/licenses/by/)", "[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)", "[![License: Open Font-1.1](https://img.shields.io/badge/License-OFL_1.1-lightgreen.svg)](https://opensource.org/licenses/OFL-1.1)", "[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)", "[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)", "[![License: Zlib](https://img.shields.io/badge/License-Zlib-lightgrey.svg)](https://opensource.org/licenses/Zlib)"];
+const licArray = ['Apache', 'Boost', 'BSD', 'Creative Commons', 'Eclipse', 'GNU', 'The Organization for Ethical Source', 'IBM', 'ISC', 'MIT', 'Mozilla', 'Open Data Commons', 'Perl', 'SIL', 'Unlicense', 'WTFPL', 'Zlib'];
+var licChoice;
+
+console.log(licenseArray.length + " " + licArray.length);
 
 inquirer
     .prompt([
         {
             type: 'input',
-            message: 'What is your name?',
-            name: 'yourName',
+            message: 'What is the title of your project?',
+            name: 'inpTitle',
         },
         {
             type: 'input',
-            message: 'What is your favorite thing to do?',
-            name: 'favThing',
+            message: 'Short description of project:',
+            name: 'inpDesc',
         },
         {
             type: 'input',
-            message: 'What is your future car?',
-            name: 'car',
+            message: 'Info about installation:',
+            name: 'inpInst',
+        },
+        {
+            type: 'input',
+            message: 'Info about usage:',
+            name: 'inpUsage',
+        },
+        {
+            type: 'list',
+            message: 'License type:',
+            name: 'inpLic',
+            choices: ['Apache','Boost', 'BSD', 'Creative Commons', 'Eclipse', 'GNU', 'The Organization for Ethical Source', 'IBM', 'ISC', 'MIT', 'Mozilla', 'Open Data Commons', 'Perl', 'SIL', 'Unlicense', 'WTFPL', 'Zlib'],
+        },
+        {
+            type: 'input',
+            message: 'Info about contributing',
+            name: 'inpCont',
+        },
+        {
+            type: 'input',
+            message: 'Info about tests:',
+            name: 'inpTests',
+        },
+        {
+            type: 'input',
+            message: 'Your GitHub username:',
+            name: 'inpQsGH',
+        },
+        {
+            type: 'input',
+            message: 'Your developer email',
+            name: 'inpQsE',
         }
     ])
     .then((response) =>
-        fs.writeFile('newindex.html', 
-        `<!DOCTYPE html>
-        <html lang="en"
+        fs.writeFile('README.md', 
+        `# ${response.inpTitle}
+        ${licenseArray[licArray.indexOf(response.inpLic)]}
+
+        ## Table of Contents
+        * [Description](#general-description)
+        * [Installation](#installation)
+        * [Usage](#usage)
+        * [License](#license)
+        * [Contributing](#contributing)
+        * [Tests](#tests)
+        * [Questions](#questions)
         
-        <head>
-            <meta charset="ETF-8" />
-            <title>A Site</title>
-            <!--Viewport Fix-->
-            <meta content="width=device-width, initial-scale=1" name="viewport" />
-        </head>
         
-        <body>
-            <p>My name is ${response.yourName}</p>
-            <br>
-            <p>My favorite thing to do is ${response.favThing}</p>
-            <br>
-            <p>My future car is a ${response.car}</p>
-        </body>
+        ## Description
+        ${response.inpDesc}
         
-        </html>`, 
+        
+        ## Installation
+        ${response.inpInst}
+        
+        
+        ## Usage
+        ${response.inpUsage}
+        
+        
+        ## License
+        ${response.inpLic}
+        
+        
+        ## Contributing
+        ${response.inpCont}
+        
+        
+        ## Tests
+        ${response.inpTests}
+        
+        
+        ## Questions
+        Any questions?  Contact me on GitHub @ https://github.com/${response.inpQsGH}.  Or email ${response.inpQsE}`, 
         (err) =>
             err ? console.error(err) : console.log("Success!")
         )
