@@ -62,42 +62,42 @@ inquirer
         `# ${response.inpTitle}
         ${licenseArray[licArray.indexOf(response.inpLic)]}
 
-        ## Table of Contents
-        * [Description](#general-description)
-        * [Installation](#installation)
-        * [Usage](#usage)
-        * [License](#license)
-        * [Contributing](#contributing)
-        * [Tests](#tests)
-        * [Questions](#questions)
+    ## Table of Contents
+    * [Description](#general-description)
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contributing](#contributing)
+    * [Tests](#tests)
+    * [Questions](#questions)
         
         
-        ## Description
-        ${response.inpDesc}
-        
-        
-        ## Installation
-        ${response.inpInst}
-        
-        
-        ## Usage
-        ${response.inpUsage}
-        
-        
-        ## License
-        ${response.inpLic}
-        
-        
-        ## Contributing
-        ${response.inpCont}
-        
-        
-        ## Tests
-        ${response.inpTests}
-        
-        
-        ## Questions
-        Any questions?  Contact me on GitHub @ https://github.com/${response.inpQsGH}.  Or email ${response.inpQsE}`, 
+    ## Description
+    ${response.inpDesc}
+    
+    
+    ## Installation
+    ${response.inpInst}
+    
+    
+    ## Usage
+    ${response.inpUsage}
+    
+    
+    ## License
+    ${response.inpLic}
+    
+    
+    ## Contributing
+    ${response.inpCont}
+    
+    
+    ## Tests
+    ${response.inpTests}
+    
+    
+    ## Questions
+    Any questions?  Contact me on GitHub @ https://github.com/${response.inpQsGH}.  Or email ${response.inpQsE}`, 
         (err) =>
             err ? console.error(err) : console.log("Success!")
         )
