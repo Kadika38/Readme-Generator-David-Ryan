@@ -1,4 +1,22 @@
 {
+  "name": "readme-generator-david-ryan",
+  "version": "1.0.0",
+  "description": "A simple command line js application to generate a professional README.md file for projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kadika38/Readme-Generator-David-Ryan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kadika38/Readme-Generator-David-Ryan/issues"
+  },
+  "homepage": "https://github.com/Kadika38/Readme-Generator-David-Ryan#readme",
   "dependencies": {
     "inquirer": "^8.2.4"
   }
