@@ -59,8 +59,7 @@ inquirer
     ])
     .then((response) =>
         fs.writeFile('README.md', 
-        `# ${response.inpTitle}
-${licenseArray[licArray.indexOf(response.inpLic)]}
+        `# ${response.inpTitle} ${licenseArray[licArray.indexOf(response.inpLic)]}
 
 ## Table of Contents
 * [Description](#general-description)
@@ -97,7 +96,7 @@ ${response.inpTests}
 
 
 ## Questions
-Any questions?  Contact me on GitHub @ https://github.com/${response.inpQsGH}.  Or email ${response.inpQsE}`, 
+Any questions?  Contact me on GitHub @ https://github.com/${response.inpQsGH} or email ${response.inpQsE}`, 
         (err) =>
             err ? console.error(err) : console.log("Success!")
         )
